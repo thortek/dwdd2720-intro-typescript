@@ -1,0 +1,14 @@
+{
+  "name": "intro-typescript",
+  "version": "1.0.0",
+  "description": "My first TypeScript project for DWDD 2720",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thor Anderson",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  }
+}
