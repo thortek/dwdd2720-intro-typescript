@@ -4,7 +4,8 @@
   "description": "My first TypeScript project for DWDD 2720",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc && vite build"
   },
   "author": "Thor Anderson",
   "license": "ISC",
