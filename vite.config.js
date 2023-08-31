@@ -7,8 +7,9 @@ const outDir = resolve(__dirname, "dist")
 export default defineConfig({
     root,
     build: {
+        outDir,
+        emptyOutDir: true,
         rollupOptions: {
-            outDir,
             input: {
                 main: resolve(root, "index.html")
             }
