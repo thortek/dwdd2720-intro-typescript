@@ -4,7 +4,7 @@
   "description": "My first TypeScript project for DWDD 2720",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 2720",
     "build": "tsc && vite build"
   },
   "author": "Thor Anderson",
@@ -13,6 +13,9 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.29",
+    "tailwindcss": "^3.3.3",
     "vite": "^4.4.9"
   }
 }
