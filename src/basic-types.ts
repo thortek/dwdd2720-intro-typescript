@@ -27,3 +27,5 @@ const bar: string = "456"; // this is a declaration with an initial assignment a
 //foo = true; // and another
 //foo = {}; // and another
 //foo = []; // and another
+
+// need to add examples of union types particulary with regard to DOM elements
