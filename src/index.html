@@ -6,7 +6,7 @@
     <title>My First TypeScript Project</title>
     <link rel="stylesheet" href="index.css">
     <script src="index.ts" type="module" defer></script>
-    <script src="basic-types.ts" type="module" defer></script>
+    <!-- <script src="basic-types.ts" type="module" defer></script> -->
 </head>
 <body>
     <header>
@@ -21,8 +21,13 @@
                 </li>
             </ul>
         </nav>
-        <div id="messages" class="grow bg-blue-200 mx-4 p-4 sm:bg-red-200 md:bg-purple-300 lg:bg-yellow-200 xl:bg-green-300">
+        <div id="messages" class="grow bg-blue-200 mx-4 p-2 sm:bg-red-200 md:bg-purple-300 lg:bg-yellow-200 xl:bg-green-300">
             <p id="message"></p>
+            <div id="cardBody" class="bg-gray-200 rounded-lg p-1 shadow-lg">
+                <h2 id="cardTitle"></h2>
+                <p id="cardExplanation"></p>
+                <div id="cardCode"></div>
+            </div>   
         </div>
     </main>
 </body>

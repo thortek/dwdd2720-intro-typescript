@@ -1,14 +1,24 @@
-console.log("Hello World!")
+import { functionParamsExample } from "./basic-types"
 
-const messageParagraph = document.querySelector("#message")
+//const messageParagraph = document.querySelector("#message")
 const basicTypesButton = document.querySelector("#basicTypesButton")
 
+//const cardBody = document.querySelector("#cardBody")
+const cardTitle = document.querySelector("#cardTitle")
+const cardExplanation = document.querySelector("#cardExplanation")
+const cardCode = document.querySelector("#cardCode")
+
 basicTypesButton?.addEventListener("click", () => {
-    messageParagraph!.textContent = "Hello Basic Types!"
+    //messageParagraph!.textContent = "Hello Basic Types!"
+    loadExample()
 })
 
-//messageParagraph!.textContent = add(5, 10)
+//console.log(functionParamsExample())
 
-function add(num1: number, num2: number) {
-    return (num1 + num2).toString()
+function loadExample() {
+    const example = functionParamsExample()
+    cardTitle!.textContent = example.title
+    cardExplanation!.textContent = example.explanation
+    cardCode!.innerHTML = example.code
 }
+
