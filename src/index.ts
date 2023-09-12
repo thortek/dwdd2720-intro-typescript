@@ -1,4 +1,7 @@
-import { functionParamsExample } from "./basic-types"
+import { basicTypesExample, functionParamsExample } from "./basic-types"
+import hljs from "highlight.js/lib/core"
+import typescript from "highlight.js/lib/languages/typescript"
+hljs.registerLanguage("typescript", typescript)
 
 //const messageParagraph = document.querySelector("#message")
 const basicTypesButton = document.querySelector("#basicTypesButton")
@@ -16,9 +19,10 @@ basicTypesButton?.addEventListener("click", () => {
 //console.log(functionParamsExample())
 
 function loadExample() {
-    const example = functionParamsExample()
+    const example = basicTypesExample()
     cardTitle!.textContent = example.title
     cardExplanation!.textContent = example.explanation
     cardCode!.innerHTML = example.code
+    hljs.highlightAll()
 }
 

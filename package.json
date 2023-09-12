@@ -11,6 +11,7 @@
   "author": "Thor Anderson",
   "license": "ISC",
   "dependencies": {
+    "highlight.js": "^11.8.0",
     "typescript": "^5.2.2"
   },
   "devDependencies": {

@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My First TypeScript Project</title>
-    <link rel="stylesheet" href="index.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css"
+    />
+
+    <link rel="stylesheet" href="index.css" />
     <script src="index.ts" type="module" defer></script>
     <!-- <script src="basic-types.ts" type="module" defer></script> -->
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1 class="text-4xl bg-slate-300 p-4 rounded-xl m-8 shadow-xl border-4 text-center">TypeScript Types with Examples</h1>
+      <h1
+        class="text-4xl bg-slate-300 p-4 rounded-xl m-8 shadow-xl border-4 text-center"
+      >
+        TypeScript Types with Examples
+      </h1>
     </header>
-    
+
     <main class="flex h-screen">
-        <nav class="bg-slate-300 mx-2 w-72">
-            <ul class="p-2">
-                <li>
-                    <button id="basicTypesButton" class="outline rounded p-2">Basic Types</button>
-                </li>
-            </ul>
-        </nav>
-        <div id="messages" class="grow bg-blue-200 mx-4 p-2 sm:bg-red-200 md:bg-purple-300 lg:bg-yellow-200 xl:bg-green-300">
-            <p id="message"></p>
-            <div id="cardBody" class="bg-gray-200 rounded-lg p-1 shadow-lg">
-                <h2 id="cardTitle"></h2>
-                <p id="cardExplanation"></p>
-                <div id="cardCode"></div>
-            </div>   
+      <nav class="bg-slate-300 mx-2 w-72">
+        <ul class="p-2">
+          <li>
+            <button id="basicTypesButton" class="outline rounded p-2">
+              Basic Types
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <div
+        id="messages"
+        class="grow bg-blue-200 mx-4 p-2 sm:bg-red-200 md:bg-purple-300 lg:bg-yellow-200 xl:bg-green-300"
+      >
+        <p id="message"></p>
+        <div id="cardBody" class="bg-gray-200 rounded-lg p-1 shadow-lg">
+          <h2 id="cardTitle"></h2>
+          <p id="cardExplanation"></p>
+          <pre>
+            <code id="cardCode" class="rounded-lg max-w-5xl whitespace-pre-line"></code>
+        </pre>
         </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>
