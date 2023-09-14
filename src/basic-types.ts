@@ -69,9 +69,49 @@ let myTuple: [string, number] = ["Hello", 42];
 // myTuple is a variable annotated with the tuple data type and assigned the value ["Hello", 42]
 // Tuples are fixed-length arrays where each element has a specific data type
 // In TypeScript, you can specify any number of elements in a tuple, but the data types of each element must match the data types specified in the tuple declaration.
-        `
+
+// Enum
+enum Color {
+    Red,
+    Silver,
+    BahamaGreen,
+    MidnightBlue,
+}
+// Color is a variable annotated with the enum data type and assigned the value {Red: 0, Silver: 1, White: 2, Black: 3, Bahama_Green: 4, Midnight_Blue: 5}
+
+// Any
+let myVariable: any = "Hello World";
+myVariable = 42; 
+// this is valid because myVariable is of type any so it can be assigned (and reassigned) any value
+
+// Void
+function saySomething(message: string): void {
+    console.log(message);
+}
+// saySomething is a function that takes a string parameter and returns void
+
+// Null and Undefined
+let myNull: null = null; // null is not a JavaScript primitive, but TypeScript adds it as a data type
+let myUndefined: undefined = undefined; // undefined is a JavaScript primitive, and TypeScript adds it as a data type
+// null and undefined are not the same thing in TypeScript
+
+// Never
+function neverReturns(): never {
+    throw new Error("An error!");
+} // never is a data type that represents the type of values that never occur
+// an example of a function that returns never is a function that always throws an error
+
+// Object
+let myObject: object = { foo: "bar" };
+// myObject is a variable annotated with the object data type and assigned the value { foo: "bar" }
+// Using the 'object' datatype should be done with caution and in specific use cases.  It can be useful when dealing with situations where you need to work with dynamic or unknown data structures, such as when handling data from external sources or dealing with generic types.
+// However, using the 'object' datatype too liberally can lead to coe that is harder to reason about, maintain, and debug. It is best to use more specific and precise types whenever possible.
+
+`
     }
 }
+
+
 
 export function functionParamsExample() {
     return {
@@ -84,11 +124,23 @@ export function functionParamsExample() {
     }
 }
 
+let myVariable: any = "Hello World";
+myVariable = 42;
+
+enum Color {
+    Red,
+    Silver,
+    White,
+    Black,
+    Bahama_Green,
+    Midnight_Blue,
+}
+
 const sportsCar: {
     make: string;
     model: string;
     year: number;
-    color: string;
+    color: Color;
     isConvertible: boolean;
     isManual: boolean;
     topSpeed: number;
@@ -96,7 +148,7 @@ const sportsCar: {
     make: "Porsche",
     model: "911",
     year: 2020,
-    color: "red",
+    color: Color.Bahama_Green,
     isConvertible: true,
     isManual: false,
     topSpeed: 180,
