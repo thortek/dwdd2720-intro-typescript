@@ -1,6 +1,7 @@
 import { basicTypesExample, arrayTypesExample, weirdTypesExample, objectTypesExample } from "./basic-types"
 import hljs from "highlight.js/lib/core"
 import typescript from "highlight.js/lib/languages/typescript"
+import { Example } from "./types/Example"
 hljs.registerLanguage("typescript", typescript)
 
 //const messageParagraph = document.querySelector("#message")
@@ -13,12 +14,6 @@ document.querySelector("#objectTypesButton")?.addEventListener("click", () => lo
 const cardTitle = document.querySelector("#cardTitle")
 const cardExplanation = document.querySelector("#cardExplanation")
 const cardCode = document.querySelector("#cardCode")
-
-interface Example {
-    title: string;
-    explanation: string;
-    code: string;
-}
 
 function loadExample(exampleType: string = "basic") {
     let chosenExampleType: Example

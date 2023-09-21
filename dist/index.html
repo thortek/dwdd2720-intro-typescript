@@ -1,32 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My First TypeScript Project</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css"
+    />
+
     
     
-  <script type="module" crossorigin src="/assets/main-0d7901b1.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/index-75b77730.js">
-  <link rel="stylesheet" href="/assets/index-99d4594a.css">
-</head>
-<body>
+    <!-- <script src="basic-types.ts" type="module" defer></script> -->
+    <script type="module" crossorigin src="/assets/main-0421322e.js"></script>
+    <link rel="stylesheet" href="/assets/index-73311db0.css">
+  </head>
+  <body>
     <header>
-        <h1 class="text-4xl bg-slate-300 p-4 rounded-xl m-8 shadow-xl border-4 text-center">TypeScript Types with Examples</h1>
+      <h1
+        class="text-4xl bg-slate-300 p-4 rounded-xl m-8 shadow-xl border-4 text-center"
+      >
+        TypeScript Types with Examples
+      </h1>
     </header>
-    
+
     <main class="flex h-screen">
-        <nav class="bg-slate-300 mx-2 w-72">
-            <ul class="p-2">
-                <li>
-                    <button class="outline rounded p-2">Basic Types</button>
-                </li>
-            </ul>
-        </nav>
-        <div id="messages" class="bg-blue-200 mx-4 p-4 sm:bg-red-200 md:bg-purple-300 lg:bg-yellow-200 xl:bg-green-300">
-            <p>Messages will appear here</p>
-            <p id="message"></p>
+      <nav class="bg-slate-300 mx-2 min-w-max text-center">
+        <ul class="p-2">
+          <li class="m-4">
+            <button
+              id="basicTypesButton"
+              class="btn bg-slate-500 shadow-md hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-sm"
+            >
+              Basic Types
+            </button>
+          </li>
+          <li class="m-4">
+            <button
+              id="arrayTypesButton"
+              class="btn bg-slate-500 shadow-md hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-sm"
+            >
+              Array Types
+            </button>
+          </li>
+          <li class="m-4">
+            <button
+              id="weirdTypesButton"
+              class="btn bg-slate-500 shadow-md hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-sm"
+            >
+              Weird Types
+            </button>
+          </li>
+          <li class="m-4">
+            <button
+              id="objectTypesButton"
+              class="btn bg-slate-500 shadow-md hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-sm"
+            >
+              Object Types
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <div
+        id="messages"
+        class="grow bg-blue-200 mx-4 p-2 sm:bg-red-200 md:bg-purple-300 lg:bg-yellow-200 xl:bg-green-300"
+      >
+        <div id="cardBody" class="bg-gray-200 rounded-lg p-1 shadow-lg">
+          <h2 id="cardTitle"></h2>
+          <p id="cardExplanation"></p>
+          <pre>
+            <code id="cardCode" class="rounded-lg max-w-5xl whitespace-pre-line"></code>
+        </pre>
         </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>

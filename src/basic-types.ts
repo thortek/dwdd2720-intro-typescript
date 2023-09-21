@@ -102,16 +102,7 @@ interface Person {
 
 
 
-export function functionParamsExample() {
-    return {
-        title: `Data types can be set for function parameters and return values`,
-        explanation: `When writing functions in TypeScript, you can specify the types of data that the function expects as parameters, and the type of data that the function will return`,
-        code: `
-        function add(num1: number, num2: number): string {
-            return (num1 + num2).toString()
-        }`
-    }
-}
+
 
 enum Color {
     Red,
