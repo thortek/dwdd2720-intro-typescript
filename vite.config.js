@@ -13,6 +13,7 @@ export default defineConfig({
             input: {
                 main: resolve(root, "index.html"),
                 functionTypes: resolve(root, 'functionTypes', "index.html"),
+                classes: resolve(root, 'classes', "index.html"),
             }
         }
     }
