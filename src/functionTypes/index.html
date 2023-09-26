@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css"
     />
-    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="../index.css" />
     <script defer type="module" src="function-types.ts"></script>
     <title>Function Types</title>
-</head>
-<body>
-    <h1 class="text-4xl bg-slate-300 p-4 rounded-xl m-8 shadow-xl border-4 text-center">Function Types</h1>
-    <main class="bg-slate-300 w-screen h-screen">
-        <!-- Need to build a code carousel here with individual
+  </head>
+  <body>
+    <h1
+      class="text-4xl bg-slate-300 p-4 rounded-xl m-8 shadow-xl border-4 text-center"
+    >
+      Function Types
+    </h1>
+    <main
+      class="flex flex-col items-center justify-center h-screen bg-slate-300"
+    >
+      <!-- Need to build a code carousel here with individual
         cards of code examples able to navigate them left and right-->
-        <div id="codeCarousel" class="bg-slate-500 w-7/8 h-1/2 mx-16">
-            <div id="cardBody" class="bg-gray-200 rounded-lg p-2 shadow-lg mx-2">
-                <h2 id="cardTitle"></h2>
-                <p id="cardExplanation"></p>
-                <pre>
+      <div id="codeCarousel" class="flex items-center justify-between max-w-5xl w-full bg-slate-500">
+        <button
+          id="prevIndicator"
+          class="btn bg-slate-500 shadow-md hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-sm"
+          id="previousButton"
+        >
+          Previous
+        </button>
+        <div id="cardBody" class="bg-gray-200 rounded-lg p-2 shadow-lg mx-2">
+          <h2 id="cardTitle"></h2>
+          <p id="cardExplanation"></p>
+          <pre>
                   <code id="cardCode" class="rounded-lg max-w-5xl whitespace-pre-line"></code>
               </pre>
-              </div>
-              <button id="prevIndicator" class="btn bg-slate-500 shadow-md hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-sm" id="previousButton">Previous</button>
-                <button id="nextIndicator" class="btn bg-slate-500 shadow-md hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-sm" id="nextButton">Next</button>
         </div>
+        <button
+          id="nextIndicator"
+          class="btn bg-slate-500 shadow-md hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-sm"
+          id="nextButton"
+        >
+          Next
+        </button>
+      </div>
     </main>
-</body>
+  </body>
 </html>
