@@ -100,6 +100,18 @@ interface Person {
     }
 }
 
+export function complexTypesExample() {
+    return {
+        title: `Complex Types`,
+        explanation: `TypeScript has a few different types for complex data structures, including union, intersection, and function`,
+        code: `
+// Union
+let myUnion: string | number = "Hello World";
+myUnion = 42;
+// myUnion is a variable annotated with the union data type and assigned the value "Hello World"`
+    }
+}
+
 
 
 
