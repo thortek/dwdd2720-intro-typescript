@@ -1,3 +1,26 @@
+const section2 = document.querySelector('#section2') as HTMLElement;
+const imgContent = document.querySelector('section > img') as HTMLElement;
+
+const objOptions = {
+    root: null,
+    threshold: 0.5,
+    rootMargin: '-100px',
+};
+
+const sectionObserver = new IntersectionObserver(callBackFunction, objOptions);
+if (section2) sectionObserver.observe(section2);
+
+function callBackFunction(entries: IntersectionObserverEntry[]) {
+    const [entry] = entries;
+    //console.log(entry);
+    if (imgContent && entry.isIntersecting) {
+        imgContent.classList.remove("translate-x-full")
+    } else if (imgContent) {
+        imgContent.classList.add("translate-x-full")
+    }
+}
+
+
 // Abstraction: Classes
 
 abstract class Shape {
