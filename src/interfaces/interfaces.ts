@@ -5,11 +5,42 @@ const blocks = curriculum['responsive-web-design'].blocks;
 const blocksArray = Object.values(blocks);
 
 const navBar = document.querySelector('.navbar');
+const navList = document.querySelector('#navList');
 
 const buildNavFromJSON = (blocks: any) => {
     blocks.forEach((block: any) => {
+        console.log(block.meta.name)
 // figure out how to build the nav bar from the JSON data
+// create a nav item for each block
+        const navItem = document.createElement('a');
+        navItem.classList.add('btn')
+        navItem.href = `#`;
+        navItem.textContent = block.meta.name;
+
+        navItem.addEventListener('click', () => {
+            // find the block that matches the nav item that was clicked
+            const foundBlock = blocksArray.find(
+                (item: any) => item.meta.name === block.meta.name
+            )
+            buildLeftNavFromJSON(foundBlock);
+        });
+        navBar?.appendChild(navItem)
     });
+}
+
+buildNavFromJSON(blocksArray);
+
+const buildLeftNavFromJSON = (block: any) => {
+    // clear out the left nav
+    while (navList?.firstChild) {
+        navList.removeChild(navList.firstChild);
+    }
+    block.challenges.forEach((challenge: any) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = challenge.title;
+        listItem.classList.add('text-white')
+        navList?.appendChild(listItem);
+})
 }
 
 /* navLink.classList.add('nav-link');
