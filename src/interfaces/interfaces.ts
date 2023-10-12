@@ -56,6 +56,7 @@ const buildLeftNavFromJSON = (block: any) => {
         "btn",
       "w-32",
       "bg-green-200",
+      "text-white",
       "text-center",
       "p-2",
       "hover:text-white",
@@ -84,12 +85,17 @@ const buildSnippetDisplay = (challenge: any) => {
  
     const snippetTitle = document.createElement("h2")
     snippetTitle.textContent = snippet.title
+    snippetTitle.classList.add("text-2xl", "font-bold")
+    
     const snippetDescription = document.createElement("p")
     snippetDescription.innerHTML = snippet.description
+    const snippetInstructions = document.createElement("p")
+    snippetInstructions.innerHTML = snippet.instructions
 
 
     snippetDisplay?.appendChild(snippetTitle)
     snippetDisplay?.appendChild(snippetDescription)
+    snippetDisplay?.appendChild(snippetInstructions)
 }
 
 
