@@ -1,16 +1,19 @@
 import curriculum from "../data/curriculum.json"
-import { ExampleCodeSnippet } from "../types/ExampleCodeSnippet"
+import { ExampleCodeSnippet, VideoDisplayer } from "../types/ExampleCodeSnippet"
 
-class ExampleCodeSnippetImpl implements ExampleCodeSnippet {
-  title: string
-  description: string
-  instructions: string
+class ExampleCodeSnippetImpl implements ExampleCodeSnippet, VideoDisplayer {
 
-  constructor(title: string, description: string, instructions: string) {
-    this.title = title
-    this.description = description
-    this.instructions = instructions
-  }
+  constructor(
+    public title: string, 
+    public description: string, 
+    public instructions: string, 
+    public solution: string,
+    public videoUrl: string
+    ) {}
+    displayVideo(theFrame: HTMLIFrameElement): void {
+        //throw new Error("Method not implemented. Why didn't you listen to Thor?");
+        theFrame.src = this.videoUrl
+    }
 }
 
 const blocks = curriculum["responsive-web-design"].blocks
@@ -54,8 +57,8 @@ const buildLeftNavFromJSON = (block: any) => {
     listItem.textContent = challenge.title
     listItem.classList.add(
         "btn",
-      "w-32",
-      "bg-green-200",
+        "mx-2",
+      "bg-blue-200",
       "text-center",
       "cursor-pointer",
       "p-2",
@@ -75,7 +78,12 @@ const buildLeftNavFromJSON = (block: any) => {
 buildLeftNavFromJSON(blocksArray[0]) // temporary
 
 const buildSnippetDisplay = (challenge: any) => {
-    const snippet = new ExampleCodeSnippetImpl(challenge.title, challenge.description, challenge.instructions)
+    const snippet = new ExampleCodeSnippetImpl(
+      challenge.title, 
+      challenge.description, 
+      challenge.instructions, 
+      challenge.solutions[0].indexhtml.contents,
+      challenge.videoUrl)
     const snippetDisplay = document.querySelector("#snippetDisplay")
     // clear out the snippet display
     while (snippetDisplay?.firstChild) {
@@ -89,13 +97,22 @@ const buildSnippetDisplay = (challenge: any) => {
 
     const snippetDescription = document.createElement("p")
     snippetDescription.innerHTML = snippet.description
+
     const snippetInstructions = document.createElement("p")
     snippetInstructions.innerHTML = snippet.instructions
+
+    const snippetSolution = document.createElement("div")
+    snippetSolution.innerHTML = snippet.solution
+
+    const snippetVideo = document.createElement("iframe")
+    snippet.displayVideo(snippetVideo)
 
 
     snippetDisplay?.appendChild(snippetTitle)
     snippetDisplay?.appendChild(snippetDescription)
     snippetDisplay?.appendChild(snippetInstructions)
+    snippetDisplay?.appendChild(snippetSolution)
+    snippetDisplay?.appendChild(snippetVideo)
 }
 
 
