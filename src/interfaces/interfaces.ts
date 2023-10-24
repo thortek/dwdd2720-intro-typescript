@@ -2,34 +2,84 @@ import curriculum from "../data/curriculum.json"
 import { ExampleCodeSnippet, VideoDisplayer } from "../types/ExampleCodeSnippet"
 
 class ExampleCodeSnippetImpl implements ExampleCodeSnippet, VideoDisplayer {
-
   constructor(
-    public title: string, 
-    public description: string, 
-    public instructions: string, 
+    public title: string,
+    public description: string,
+    public instructions: string,
     public solution: string,
     public videoUrl: string
-    ) {}
-    displayVideo(theFrame: HTMLIFrameElement): void {
-        //throw new Error("Method not implemented. Why didn't you listen to Thor?");
-        theFrame.src = this.videoUrl
-    }
+  ) {}
+  displayVideo(theFrame: HTMLIFrameElement): void {
+    //throw new Error("Method not implemented. Why didn't you listen to Thor?");
+    theFrame.src = this.videoUrl
+  }
 }
+
+let selectedBlock: number = 0
 
 const blocks = curriculum["responsive-web-design"].blocks
 
 const blocksArray = Object.values(blocks)
 
+// example of destructuring an array
+const [basicCSS, basicHTML, flexbox, grid] = blocksArray
+
+const basicCSSSnippets = basicCSS.challenges.map(
+  (challenge: any) =>
+    new ExampleCodeSnippetImpl(
+      challenge.title,
+      challenge.description,
+      challenge.instructions,
+      challenge.solutions[0].indexhtml.contents,
+      challenge.videoUrl
+    )
+)
+
+const basicHTMLSnippets = basicHTML.challenges.map(
+  (challenge: any) =>
+    new ExampleCodeSnippetImpl(
+      challenge.title,
+      challenge.description,
+      challenge.instructions,
+      challenge.solutions[0].indexhtml.contents,
+      challenge.videoUrl
+    )
+)
+
+const flexboxSnippets = flexbox.challenges.map(
+  (challenge: any) =>
+    new ExampleCodeSnippetImpl(
+      challenge.title,
+      challenge.description,
+      challenge.instructions,
+      challenge.solutions[0].indexhtml.contents,
+      challenge.videoUrl
+    )
+)
+
+const gridSnippets = grid.challenges.map(
+  (challenge: any) =>
+    new ExampleCodeSnippetImpl(
+      challenge.title,
+      challenge.description,
+      challenge.instructions,
+      challenge.solutions[0].indexhtml.contents,
+      challenge.videoUrl
+    )
+)
+
+console.log(basicCSSSnippets, basicHTMLSnippets, flexboxSnippets, gridSnippets)
+
 const navBar = document.querySelector(".navbar")
 const navList = document.querySelector("#navList")
 
 const buildNavFromJSON = (blocks: any) => {
-  blocks.forEach((block: any) => {
+  blocks.forEach((block: any, index: number) => {
     console.log(block.meta.name)
     // figure out how to build the nav bar from the JSON data
     // create a nav item for each block
     const navItem = document.createElement("a")
-    navItem.classList.add("btn")
+    navItem.classList.add("btn", "px-4", "m-4", "rounded", "bg-indigo-500", "text-white", "hover:bg-white", "hover:text-indigo-500")
     navItem.href = `#`
     navItem.textContent = block.meta.name
 
@@ -38,6 +88,15 @@ const buildNavFromJSON = (blocks: any) => {
       const foundBlock = blocksArray.find(
         (item: any) => item.meta.name === block.meta.name
       )
+      selectedBlock = index
+      const navItems = document.querySelectorAll("a.btn")
+
+      navItems.forEach((item: any, itemIndex: number) => {
+        item.classList.add("text-white")
+        if(itemIndex === selectedBlock) {
+          item.classList.remove("text-white")
+        }
+      })
       buildLeftNavFromJSON(foundBlock)
     })
     navBar?.appendChild(navItem)
@@ -56,8 +115,8 @@ const buildLeftNavFromJSON = (block: any) => {
     // const navButton = document.createElement('h3');
     listItem.textContent = challenge.title
     listItem.classList.add(
-        "btn",
-        "mx-2",
+      "btn",
+      "mx-2",
       "bg-blue-200",
       "text-center",
       "cursor-pointer",
@@ -67,8 +126,8 @@ const buildLeftNavFromJSON = (block: any) => {
     )
 
     listItem.addEventListener("click", () => {
-        console.log("clicked")
-        buildSnippetDisplay(challenge)
+      console.log("clicked")
+      buildSnippetDisplay(challenge)
     })
 
     navList?.appendChild(listItem)
@@ -78,47 +137,42 @@ const buildLeftNavFromJSON = (block: any) => {
 buildLeftNavFromJSON(blocksArray[0]) // temporary
 
 const buildSnippetDisplay = (challenge: any) => {
-    const snippet = new ExampleCodeSnippetImpl(
-      challenge.title, 
-      challenge.description, 
-      challenge.instructions, 
-      challenge.solutions[0].indexhtml.contents,
-      challenge.videoUrl)
-    const snippetDisplay = document.querySelector("#snippetDisplay")
-    // clear out the snippet display
-    while (snippetDisplay?.firstChild) {
-        snippetDisplay.removeChild(snippetDisplay.firstChild)
-    }
-    // build an ExampleCodeSnippet instance for each challenge
- 
-    const snippetTitle = document.createElement("h2")
-    snippetTitle.textContent = snippet.title
-    snippetTitle.classList.add("text-2xl", "font-bold")
+  const snippet = new ExampleCodeSnippetImpl(
+    challenge.title,
+    challenge.description,
+    challenge.instructions,
+    challenge.solutions[0].indexhtml.contents,
+    challenge.videoUrl
+  )
+  const snippetDisplay = document.querySelector("#snippetDisplay")
+  // clear out the snippet display
+  while (snippetDisplay?.firstChild) {
+    snippetDisplay.removeChild(snippetDisplay.firstChild)
+  }
+  // build an ExampleCodeSnippet instance for each challenge
 
-    const snippetDescription = document.createElement("p")
-    snippetDescription.innerHTML = snippet.description
+  const snippetTitle = document.createElement("h2")
+  snippetTitle.textContent = snippet.title
+  snippetTitle.classList.add("text-2xl", "font-bold")
 
-    const snippetInstructions = document.createElement("p")
-    snippetInstructions.innerHTML = snippet.instructions
+  const snippetDescription = document.createElement("p")
+  snippetDescription.innerHTML = snippet.description
 
-    const snippetSolution = document.createElement("div")
-    snippetSolution.innerHTML = snippet.solution
+  const snippetInstructions = document.createElement("p")
+  snippetInstructions.innerHTML = snippet.instructions
 
-    const snippetVideo = document.createElement("iframe")
-    snippet.displayVideo(snippetVideo)
+  const snippetSolution = document.createElement("div")
+  snippetSolution.innerHTML = snippet.solution
 
+  const snippetVideo = document.createElement("iframe")
+  snippet.displayVideo(snippetVideo)
 
-    snippetDisplay?.appendChild(snippetTitle)
-    snippetDisplay?.appendChild(snippetDescription)
-    snippetDisplay?.appendChild(snippetInstructions)
-    snippetDisplay?.appendChild(snippetSolution)
-    snippetDisplay?.appendChild(snippetVideo)
+  snippetDisplay?.appendChild(snippetTitle)
+  snippetDisplay?.appendChild(snippetDescription)
+  snippetDisplay?.appendChild(snippetInstructions)
+  snippetDisplay?.appendChild(snippetSolution)
+  snippetDisplay?.appendChild(snippetVideo)
 }
-
-
-
-
-
 
 /* navLink.classList.add('nav-link');
 navLink.setAttribute('href', `#${block.id}`);
