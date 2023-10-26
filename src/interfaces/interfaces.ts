@@ -193,7 +193,8 @@ interface CanSwim {
   swim(): void
 }
 
-class Duck implements CanFly, CanSwim {
+// The following is an example of 'interface composition' in TypeScript. The 'Duck' class implements both the 'CanFly' and 'CanSwim' interfaces.
+class Duck implements CanFly, CanSwim { // implements forces the class to implement the methods of the interfaces
   fly(): void {
     console.log("I can fly!")
   }

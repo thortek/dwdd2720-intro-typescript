@@ -24,7 +24,7 @@ function callBackFunction(entries: IntersectionObserverEntry[]) {
 // Abstraction: Classes
 
 abstract class Shape {
-    protected color: string;
+    protected color: string; // protected means accessible within this class and any class that extends this class
 
     constructor(color: string) {
         this.color = color;
@@ -37,15 +37,14 @@ abstract class Shape {
     getColor(): string {
         return this.color;
     }
-
 }
 
-/* class Circle extends Shape {} */
+/* class Circle extends Shape.  Example of ... Inheritance */
 
 class Circle extends Shape {
-    private radius: number;
+    private radius: number;  // private means only accessible within this class
 
-    constructor(color: string, radius: number) {
+    constructor(color: string, radius: number) { // constructor is a special method that is called when a new instance of a class is created
         super(color);
         this.radius = radius;
     }
@@ -60,6 +59,7 @@ class Circle extends Shape {
 }
 
 const circle = new Circle('red', 5);
+//const shape = new Shape('blue'); // cannot do this because Shape is abstract
 
 class Person {
     name: string;
