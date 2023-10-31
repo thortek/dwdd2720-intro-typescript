@@ -15,6 +15,7 @@ export default defineConfig({
                 functionTypes: resolve(root, 'functionTypes', "index.html"),
                 classes: resolve(root, 'classes', "index.html"),
                 interfaces: resolve(root, 'interfaces', "index.html"),
+                generics: resolve(root, 'generics', "index.html"),
             }
         }
     }
