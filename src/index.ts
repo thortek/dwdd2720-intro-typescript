@@ -38,6 +38,6 @@ function loadExample(exampleType: string = "basic") {
     cardTitle!.textContent = chosenExampleType.title
     cardExplanation!.textContent = chosenExampleType.explanation
     cardCode!.innerHTML = chosenExampleType.code
-    hljs.highlightAll()
+   
 }
 
