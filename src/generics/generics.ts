@@ -76,6 +76,8 @@ console.log(totalAge);
 /* ----------------------------------------------------------------------------------------*/
 
 const detailView = document.querySelector('#detail-view') as HTMLDivElement;
+detailView.classList.add('flex', 'flex-col', 'items-center', 'justify-center', 'p-8', 'bg-gray-200', 'rounded', 'shadow', 'w-full', 'h-full');
+
 const listView = document.querySelector('#list-view') as HTMLDivElement;
 
 const exampleOne = new CodeSnippetOnly(
@@ -119,6 +121,9 @@ const exampleThree = new CodeSnippetOnly(
 function addCodeSnippet(codeSnippet: CodeSnippetOnly): void {
     const codeSnippetDiv = document.createElement('div');
     codeSnippetDiv.classList.add('min-w-fit', 'bg-gray-100', 'p-2', 'rounded', 'shadow', 'mb-4');
+    codeSnippetDiv.addEventListener('click', () => {
+        showDetailView(codeSnippet);
+    });
     const codeSnippetTitle = document.createElement('h5');
     codeSnippetTitle.classList.add('font-bold', 'mb-2');
     codeSnippetTitle.textContent = codeSnippet.title;
@@ -138,6 +143,31 @@ function addCodeSnippet(codeSnippet: CodeSnippetOnly): void {
 addCodeSnippet(exampleOne);
 addCodeSnippet(exampleTwo);
 addCodeSnippet(exampleThree)
+
+function showDetailView(codeSnippet: CodeSnippetOnly): void {
+    // remove all children from the detail view
+    while (detailView.firstChild) {
+        detailView.removeChild(detailView.firstChild);
+    }
+    const codeSnippetDiv = document.createElement('div');
+    codeSnippetDiv.classList.add('bg-blue-100', 'p-8', 'rounded', 'shadow');
+    const codeSnippetTitle = document.createElement('h2');
+    codeSnippetTitle.classList.add('text-2xl', 'font-bold', 'mb-2');
+    codeSnippetTitle.textContent = codeSnippet.title;
+    const codeSnippetDescription = document.createElement('p');
+    codeSnippetDescription.classList.add('text-xl', 'mb-2');
+    codeSnippetDescription.textContent = codeSnippet.description;
+    const codeSnippetCode = document.createElement('pre');
+    codeSnippetCode.classList.add('p-4', 'bg-gray-900', 'text-white', 'rounded', 'text-xl');
+    codeSnippetCode.innerHTML = highlightCode(codeSnippet.code);
+
+    codeSnippetDiv.appendChild(codeSnippetTitle);
+    codeSnippetDiv.appendChild(codeSnippetDescription);
+    codeSnippetDiv.appendChild(codeSnippetCode);
+    detailView.appendChild(codeSnippetDiv);
+}
+
+//showDetailView(exampleOne);
 
 
 
