@@ -78,27 +78,7 @@ console.log(totalAge);
 const detailView = document.querySelector('#detail-view') as HTMLDivElement;
 const listView = document.querySelector('#list-view') as HTMLDivElement;
 
-// function that will take a code snippet and add it to the list view
-function addCodeSnippet(codeSnippet: CodeSnippetOnly): void {
-    const codeSnippetDiv = document.createElement('div');
-    codeSnippetDiv.classList.add('bg-gray-100', 'p-4', 'rounded', 'shadow', 'mb-4');
-    const codeSnippetTitle = document.createElement('h5');
-    codeSnippetTitle.classList.add('font-bold', 'mb-2');
-    codeSnippetTitle.textContent = codeSnippet.title;
-    const codeSnippetDescription = document.createElement('p');
-    codeSnippetDescription.classList.add('text-sm', 'mb-2');
-    codeSnippetDescription.textContent = codeSnippet.description;
-    const codeSnippetCode = document.createElement('pre');
-    codeSnippetCode.classList.add('p-4', 'bg-gray-900', 'text-white', 'rounded', 'text-sm');
-    codeSnippetCode.innerHTML = highlightCode(codeSnippet.code);
-
-    codeSnippetDiv.appendChild(codeSnippetTitle);
-    codeSnippetDiv.appendChild(codeSnippetDescription);
-    codeSnippetDiv.appendChild(codeSnippetCode);
-    listView.appendChild(codeSnippetDiv);
-}
-
-addCodeSnippet(new CodeSnippetOnly(
+const exampleOne = new CodeSnippetOnly(
     'Generic Functions',
     'Generic functions allow you to write code that can be reused with different types of data.',
     '',
@@ -106,9 +86,9 @@ addCodeSnippet(new CodeSnippetOnly(
     `function reverse<T>(itemArray: T[]): T[] {
     return itemArray.reverse();
 }`
-));
+)
 
-addCodeSnippet(new CodeSnippetOnly(
+const exampleTwo = new CodeSnippetOnly(
     'Generic Classes',
     'Generic classes allow you to write code that can be reused with different types of data.',
     '',
@@ -124,16 +104,40 @@ addCodeSnippet(new CodeSnippetOnly(
         return this.data;
     }
 }`
-));
+)
 
-addCodeSnippet(new CodeSnippetOnly(
+const exampleThree = new CodeSnippetOnly(
     'Generic Constraints',
     'Generic constraints allow you to specify that a generic type must have certain properties.',
     '',
     '',
     `interface hasAge {
     age: number;
-}`))
+}`)
+
+// function that will take a code snippet and add it to the list view
+function addCodeSnippet(codeSnippet: CodeSnippetOnly): void {
+    const codeSnippetDiv = document.createElement('div');
+    codeSnippetDiv.classList.add('min-w-fit', 'bg-gray-100', 'p-2', 'rounded', 'shadow', 'mb-4');
+    const codeSnippetTitle = document.createElement('h5');
+    codeSnippetTitle.classList.add('font-bold', 'mb-2');
+    codeSnippetTitle.textContent = codeSnippet.title;
+    const codeSnippetDescription = document.createElement('p');
+    codeSnippetDescription.classList.add('text-xs', 'mb-2');
+    codeSnippetDescription.textContent = codeSnippet.description;
+    const codeSnippetCode = document.createElement('pre');
+    codeSnippetCode.classList.add('min-w-[304px]', 'p-1', 'bg-gray-900', 'text-white', 'rounded', 'text-xs');
+    codeSnippetCode.innerHTML = highlightCode(codeSnippet.code);
+
+    codeSnippetDiv.appendChild(codeSnippetTitle);
+    codeSnippetDiv.appendChild(codeSnippetDescription);
+    codeSnippetDiv.appendChild(codeSnippetCode);
+    listView.appendChild(codeSnippetDiv);
+}
+
+addCodeSnippet(exampleOne);
+addCodeSnippet(exampleTwo);
+addCodeSnippet(exampleThree)
 
 
 
