@@ -3,6 +3,7 @@ export interface ExampleCodeSnippet {
     description: string;
     instructions: string;
     solution: string;
+    code: string;
 }
 
 export interface VideoDisplayer {

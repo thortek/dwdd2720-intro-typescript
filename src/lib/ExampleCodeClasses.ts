@@ -6,6 +6,7 @@ export class ExampleCodeSnippetImpl implements ExampleCodeSnippet, VideoDisplaye
       public description: string,
       public instructions: string,
       public solution: string,
+      public code: string,
       public videoUrl: string
     ) {}
     displayVideo(theFrame: HTMLIFrameElement): void {
@@ -20,5 +21,6 @@ export class ExampleCodeSnippetImpl implements ExampleCodeSnippet, VideoDisplaye
       public description: string,
       public instructions: string,
       public solution: string,
+      public code: string
     ) {}
   }

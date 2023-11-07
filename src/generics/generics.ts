@@ -78,38 +78,42 @@ console.log(totalAge);
 const detailView = document.querySelector('#detail-view') as HTMLDivElement;
 const listView = document.querySelector('#list-view') as HTMLDivElement;
 
-const exampleOne = document.createElement('div');
-exampleOne.classList.add('bg-gray-100', 'p-4', 'rounded', 'shadow', 'mb-4', 'h-64');
-const exampleOneTitle = document.createElement('h5');
-exampleOneTitle.classList.add('font-bold', 'mb-2');
-exampleOneTitle.textContent = 'Generic Functions';
-const exampleOneDescription = document.createElement('p');
-exampleOneDescription.classList.add('text-sm', 'mb-2');
-exampleOneDescription.textContent = 'Generic functions allow you to write code that can be reused with different types of data.';
-const exampleOneCode = document.createElement('pre');
-exampleOneCode.classList.add('p-4', 'bg-gray-900', 'text-white', 'rounded', 'text-sm');
+// function that will take a code snippet and add it to the list view
+function addCodeSnippet(codeSnippet: CodeSnippetOnly): void {
+    const codeSnippetDiv = document.createElement('div');
+    codeSnippetDiv.classList.add('bg-gray-100', 'p-4', 'rounded', 'shadow', 'mb-4');
+    const codeSnippetTitle = document.createElement('h5');
+    codeSnippetTitle.classList.add('font-bold', 'mb-2');
+    codeSnippetTitle.textContent = codeSnippet.title;
+    const codeSnippetDescription = document.createElement('p');
+    codeSnippetDescription.classList.add('text-sm', 'mb-2');
+    codeSnippetDescription.textContent = codeSnippet.description;
+    const codeSnippetCode = document.createElement('pre');
+    codeSnippetCode.classList.add('p-4', 'bg-gray-900', 'text-white', 'rounded', 'text-sm');
+    codeSnippetCode.innerHTML = highlightCode(codeSnippet.code);
 
-exampleOneCode.innerHTML = highlightCode(`function reverse<T>(itemArray: T[]): T[] {
+    codeSnippetDiv.appendChild(codeSnippetTitle);
+    codeSnippetDiv.appendChild(codeSnippetDescription);
+    codeSnippetDiv.appendChild(codeSnippetCode);
+    listView.appendChild(codeSnippetDiv);
+}
+
+addCodeSnippet(new CodeSnippetOnly(
+    'Generic Functions',
+    'Generic functions allow you to write code that can be reused with different types of data.',
+    '',
+    '',
+    `function reverse<T>(itemArray: T[]): T[] {
     return itemArray.reverse();
-}`)
+}`
+));
 
-exampleOne.appendChild(exampleOneTitle);
-exampleOne.appendChild(exampleOneDescription);
-exampleOne.appendChild(exampleOneCode);
-listView.appendChild(exampleOne);
-
-const exampleTwo = document.createElement('div');
-exampleTwo.classList.add('bg-gray-100', 'p-4', 'rounded', 'shadow', 'mb-4');
-const exampleTwoTitle = document.createElement('h3');
-exampleTwoTitle.classList.add('text-2xl', 'mb-2');
-exampleTwoTitle.textContent = 'Generic Classes';
-const exampleTwoDescription = document.createElement('p');
-exampleTwoDescription.classList.add('mb-2');
-exampleTwoDescription.textContent = 'Generic classes allow you to write code that can be reused with different types of data.';
-const exampleTwoCode = document.createElement('pre');
-exampleTwoCode.classList.add('p-4', 'bg-gray-900', 'text-white', 'rounded', 'text-sm');
-exampleTwoCode.innerHTML = `<code>
-class DataStorage<T> {
+addCodeSnippet(new CodeSnippetOnly(
+    'Generic Classes',
+    'Generic classes allow you to write code that can be reused with different types of data.',
+    '',
+    '',
+    `class DataStorage<T> {
     private data: T
 
     constructor(data: T) {
@@ -119,11 +123,17 @@ class DataStorage<T> {
     getData(): T {
         return this.data;
     }
-}`;
-exampleTwo.appendChild(exampleTwoTitle);
-exampleTwo.appendChild(exampleTwoDescription);
-exampleTwo.appendChild(exampleTwoCode);
-listView.appendChild(exampleTwo);
+}`
+));
+
+addCodeSnippet(new CodeSnippetOnly(
+    'Generic Constraints',
+    'Generic constraints allow you to specify that a generic type must have certain properties.',
+    '',
+    '',
+    `interface hasAge {
+    age: number;
+}`))
 
 
 
