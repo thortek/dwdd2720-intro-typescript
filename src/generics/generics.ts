@@ -169,5 +169,16 @@ function showDetailView(codeSnippet: CodeSnippetOnly): void {
 
 //showDetailView(exampleOne);
 
+/*
+TODO:
+- Add at least one more generics example, possibly 2
+- Make my list view items even smaller than currently... or maybe just make the list view be like a carousel
+- Get better looking list view items that are not jammed up against the sides or each other
+- Need to make the cursor pointer when hovering over the list view items
+- Do something about the current title/header
+- Make the detail view look better... maybe a cool background image or something like borders...
+- Something should be in the detail view right when the page loads... currently it is just blank.  Maybe it is instructions to select an item from the list view?
 
+
+*/
 
