@@ -1,4 +1,46 @@
-console.log('Welcome to my Interfaces example page!')
+import curriculum from '../data/curriculum.json'
+
+const blocks = curriculum['responsive-web-design'].blocks;
+
+const blocksArray = Object.values(blocks);
+
+const navBar = document.querySelector('.navbar');
+
+const buildNavFromJSON = (blocks: any) => {
+    blocks.forEach((block: any) => {
+// figure out how to build the nav bar from the JSON data
+    });
+}
+
+/* navLink.classList.add('nav-link');
+navLink.setAttribute('href', `#${block.id}`);
+navLink.innerText = block.title;
+navItem.appendChild(navLink); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------*/
 
 /* Interfaces
 In this example, both the 'CanFly' and 'CanSwim' interfaces are implemented by the 'Duck' class. By implementing both interfaces, the 'Duck' class is required to implement the 'fly' and 'swim' methods. This allows the 'Duck' class to inherit behavior from multiple sources. The 'Penguin' class only implements the 'CanSwim' interface, so it is only required to implement the 'swim' method.
